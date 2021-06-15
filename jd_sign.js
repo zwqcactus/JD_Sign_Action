@@ -74,12 +74,27 @@ function sendNotificationIfNeed() {
   let text = "京东签到_" + dateFormat();
   let desp = fs.readFileSync(result_path, "utf8")
 
+  
+  //20210616 add by zhouwq
+  let pos = desp.indexOf("【签到号一】")
+  let a = ""
+  if (pos != -1) {
+      a=desp.slice(pos,desp.indexOf("【其他奖励】"));  
+  }
+  pos = desp.indexOf("【签到号二】")
+  if (pos != -1) {
+      a += desp.slice(pos,desp.indexOf("【其他奖励】",pos));  
+  }
+
+  
+  
   // 去除末尾的换行
   let SCKEY = push_key.replace(/[\r\n]/g,"")
 
   const options ={
     uri:  `https://sc.ftqq.com/${SCKEY}.send`,
-    form: { text, desp },
+    //form: { text, desp },
+    form: { text, a },
     json: true,
     method: 'POST'
   }
