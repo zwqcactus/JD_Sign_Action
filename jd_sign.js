@@ -76,13 +76,15 @@ function sendNotificationIfNeed() {
 
   
   //20210616 add by zhouwq
+  var new_desp = "Start:"
   let pos = desp.indexOf("【签到号一】")
-  var new_desp = ""
   if (pos != -1) {
-      new_desp = desp.slice(pos,desp.indexOf("【其他奖励】"));  
+      new_desp += "first:"
+      new_desp += desp.slice(pos,desp.indexOf("【其他奖励】"));  
   }
   pos = desp.indexOf("【签到号二】")
   if (pos != -1) {
+      new_desp += "second:"
       new_desp += desp.slice(pos,desp.indexOf("【其他奖励】",pos));  
   }
 
