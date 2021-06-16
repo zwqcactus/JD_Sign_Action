@@ -77,13 +77,13 @@ function sendNotificationIfNeed() {
   
   //20210616 add by zhouwq
   let pos = desp.indexOf("【签到号一】")
-  let a = ""
+  var new_desp = ""
   if (pos != -1) {
-      a=desp.slice(pos,desp.indexOf("【其他奖励】"));  
+      new_desp = desp.slice(pos,desp.indexOf("【其他奖励】"));  
   }
   pos = desp.indexOf("【签到号二】")
   if (pos != -1) {
-      a += desp.slice(pos,desp.indexOf("【其他奖励】",pos));  
+      new_desp += desp.slice(pos,desp.indexOf("【其他奖励】",pos));  
   }
 
   
@@ -93,7 +93,7 @@ function sendNotificationIfNeed() {
 
   const options ={
     uri:  `https://sc.ftqq.com/${SCKEY}.send`,
-    form: { text, desp },
+    form: { text, new_desp },
     json: true,
     method: 'POST'
   }
