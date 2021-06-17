@@ -76,26 +76,22 @@ function sendNotificationIfNeed() {
 
   
   //20210616 add by zhouwq
-  let new_desp = "Start:";
+  let new_desp = "";
   let pos = desp.indexOf("签到号一") - 1;
   if (pos != -1) {
-      new_desp += "first:-----------------------------"
       new_desp += desp.slice(pos,desp.indexOf("红包", pos) + 2);  
   }
   pos = desp.indexOf("签到号二") - 1
   if (pos != -1) {
-      new_desp += "second:-----------------------------"
       new_desp += desp.slice(pos,desp.indexOf("红包",pos) + 2);  
   }
-  new_desp += "end:-----------------------------"
-  desp = new_desp + desp 
   
   // 去除末尾的换行
   let SCKEY = push_key.replace(/[\r\n]/g,"")
 
   const options ={
     uri:  `https://sc.ftqq.com/${SCKEY}.send`,
-    form: { text, desp },
+    form: { text, new_desp },
     json: true,
     method: 'POST'
   }
