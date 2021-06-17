@@ -79,15 +79,15 @@ function sendNotificationIfNeed() {
   let new_desp = "Start:";
   let pos = desp.indexOf("【签到号一】");
   if (pos != -1) {
-      new_desp += "first:"
-      new_desp += desp.slice(pos,desp.indexOf("【其他奖励】"));  
+      new_desp += "first:-----------------------------"
+      new_desp += desp.slice(pos,desp.indexOf("红包") + 2);  
   }
   pos = desp.indexOf("【签到号二】")
   if (pos != -1) {
-      new_desp += "second:"
-      new_desp += desp.slice(pos,desp.indexOf("【其他奖励】",pos));  
+      new_desp += "second:-----------------------------"
+      new_desp += desp.slice(pos,desp.indexOf("红包",pos) + 2);  
   }
-
+  new_desp += "end:-----------------------------"
   desp = new_desp + desp 
   
   // 去除末尾的换行
