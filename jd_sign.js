@@ -72,7 +72,8 @@ function sendNotificationIfNeed() {
   }
 
   let text = "京东签到_" + dateFormat();
-  let desp = fs.readFileSync(result_path, "utf8")
+  //let desp = fs.readFileSync(result_path, "utf8")
+  let desp = "testsdfsdfsdfsdfsdf"
 
   
   //20210616 add by zhouwq
@@ -95,7 +96,7 @@ function sendNotificationIfNeed() {
 
   const options ={
     uri:  `https://sc.ftqq.com/${SCKEY}.send`,
-    form: { text, new_desp },
+    form: { text, desp },
     json: true,
     method: 'POST'
   }
