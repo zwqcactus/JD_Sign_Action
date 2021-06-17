@@ -77,12 +77,12 @@ function sendNotificationIfNeed() {
   
   //20210616 add by zhouwq
   let new_desp = "Start:";
-  let pos = desp.indexOf("【签到号一】");
+  let pos = desp.indexOf("签到号一") - 1;
   if (pos != -1) {
       new_desp += "first:-----------------------------"
-      new_desp += desp.slice(pos,desp.indexOf("红包") + 2);  
+      new_desp += desp.slice(pos,desp.indexOf("红包", pos) + 2);  
   }
-  pos = desp.indexOf("【签到号二】")
+  pos = desp.indexOf("签到号二") - 1
   if (pos != -1) {
       new_desp += "second:-----------------------------"
       new_desp += desp.slice(pos,desp.indexOf("红包",pos) + 2);  
