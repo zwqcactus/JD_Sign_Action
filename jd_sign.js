@@ -85,13 +85,14 @@ function sendNotificationIfNeed() {
   if (pos != -1) {
       new_desp += desp.slice(pos,desp.indexOf("红包",pos) + 2);  
   }
+  desp = new_desp 
   
   // 去除末尾的换行
   let SCKEY = push_key.replace(/[\r\n]/g,"")
 
   const options ={
     uri:  `https://sc.ftqq.com/${SCKEY}.send`,
-    form: { text, new_desp },
+    form: { text, desp },
     json: true,
     method: 'POST'
   }
