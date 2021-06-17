@@ -72,12 +72,11 @@ function sendNotificationIfNeed() {
   }
 
   let text = "京东签到_" + dateFormat();
-  //let desp = fs.readFileSync(result_path, "utf8")
-  let desp = "testsdfsdfsdfsdfsdf"
+  let desp = fs.readFileSync(result_path, "utf8")
 
   
   //20210616 add by zhouwq
-  var new_desp = "Start:"
+  let new_desp = "Start:"
   let pos = desp.indexOf("【签到号一】")
   if (pos != -1) {
       new_desp += "first:"
@@ -96,7 +95,7 @@ function sendNotificationIfNeed() {
 
   const options ={
     uri:  `https://sc.ftqq.com/${SCKEY}.send`,
-    form: { text, desp },
+    form: { text, new_desp + desp },
     json: true,
     method: 'POST'
   }
