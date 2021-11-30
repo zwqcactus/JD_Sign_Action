@@ -70,14 +70,35 @@ function sendNotificationIfNeed() {
   if (!fs.existsSync(result_path)) {
     console.log('没有执行结果，任务中断!'); return;
   }
-
+  
+  
   let text = "京东签到_" + dateFormat();
   let desp = fs.readFileSync(result_path, "utf8");
+  
+  
+  //20211130 add by zhouwq
+  let new_desp = "";
+  let pos = desp.indexOf("签到奖励") ;
+  if (pos != -1) {
+      new_desp += desp.slice(pos + 5 , pos + 10);  
+  }
+  pos = desp.indexOf("签到奖励" , pos + 8) ;
+  if (pos != -1) {
+      new_desp += desp.slice(pos + 5 , pos + 10);  
+  }
+  text = "京东签到_" + dateFormat() + new_desp; 
+  
+  
+  
+  
+  
+
+ 
 
   
   //20210616 add by zhouwq
-  let new_desp = "";
-  let pos = desp.indexOf("签到号一") - 1;
+  new_desp = "";
+  pos = desp.indexOf("签到号一") - 1;
   if (pos != -1) {
       new_desp += desp.slice(pos,desp.indexOf("红包", pos) + 2);  
   }
