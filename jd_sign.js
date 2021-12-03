@@ -80,11 +80,11 @@ function sendNotificationIfNeed() {
   let new_desp = "";
   let pos = desp.indexOf("签到奖励") ;
   if (pos != -1) {
-      new_desp += desp.slice(pos + 5 , pos + 10);  
+      new_desp += desp.slice(pos + 6 , pos + 12);  
   }
   pos = desp.indexOf("签到奖励" , pos + 8) ;
   if (pos != -1) {
-      new_desp += desp.slice(pos + 5 , pos + 10);  
+      new_desp += desp.slice(pos + 6 , pos + 16);  
   }
   text = "京东签到_" + dateFormat() + new_desp; 
   
